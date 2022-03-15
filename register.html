@@ -1,0 +1,99 @@
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	
+	<script>
+		function validate()
+		{
+			var pass=document.myform.password1.value
+			if(pass.length<8)
+			{
+				alert("Please enter at least 8 digit password")
+				return false
+			}
+                        var pass2=document.myform.password2.value
+                        if (pass2!=pass)
+                        {
+                                alert("Both Passwords doesnt match each other")
+                                return false  
+                        }
+			var mobile=document.myform.mobile.value
+			if(isNaN(mobile))
+			{
+				alert("Please enter numerical mobile number");
+				return false
+			}
+			if(mobile.length<10 || mobile.length>10 || mobile.startsWith("0"))
+			{
+				alert("Please enter 10 digit correct mobile number");
+				return false
+			}
+			var age=document.myform.age.value
+			if(isNaN(age))
+			{
+				alert("Please enter valid age");
+				return false
+			}
+			var email=document.myform.email.value
+			var atpos=email.indexOf("@");
+			var dotpos=email.lastIndexOf(".");
+			if(atpos<1 || dotpos<atpos+2 || dotpos+2>email.length)
+			{
+				alert("Enter valid email address");
+				return false
+			}
+			var zip=document.myform.zip.value
+			if(isNaN(zip))
+			{
+				alert("Pin code must contain numbers only");
+				return false
+			}
+			if(zip.length<6 || zip.length>6 || zip.startsWith("0"))
+			{
+				alert("Please enter correct Pin Code of 6 digits");
+				return false
+			}
+                        var gen=document.myform.gender.value
+                        if(gen==0)
+                        {
+                                alert("Please Select Gender")
+                        }
+                        
+			return true;
+		}
+	</script>
+	
+	<body>
+		<div class="register">
+			<form action="" name="myform" onsubmit="return validate()">
+				<label><b>Username</b></label>
+				<input type="text" name ="username" id="username" placeholder="Username" required="required" onfocus="this.value = '';">
+				<label><b>Password</b></label>
+				<input type="password" name ="userpassword" id="password1" placeholder="Password" required="required" onfocus="this.value = '';">
+                                <label><b>Confirm Password</b></label>
+				<input type="password" name ="userpassword" id="password2" placeholder="Password" required="required" onfocus="this.value = '';">
+				<label><b>Mobile Number</b></label>
+				<input type="text" name ="mobile" id="mobile" placeholder="Mobile Number" required="required" onfocus="this.value = '';">
+				<label><b>Email Address</b></label>
+				<input type="text" name ="email" id="email" placeholder="Email Address" required="required" onfocus="this.value = '';">
+				<label><b>Person Age</b></label>
+				<input type="text" name ="age" id="age" placeholder="Age" required="required" onfocus="this.value = '';">
+                                <br>
+                                <label><b>Pin Code</b></label>
+				<input type="text" name ="zip" id="zip" placeholder="pin code" required="required" onfocus="this.value = '';">
+                                <br><br>
+                                <label id="gender"><b>   
+				Gender :  </b>
+				</label><br>  
+				<input type="radio" value="Male" name="gender" > Male   
+				<input type="radio" value="Female" name="gender"> Female 
+				
+				<br>
+				<input type="submit" value="Register">
+			</form>
+		</div>
+	</body>
+	
+</html>
